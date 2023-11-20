@@ -3,12 +3,33 @@ import sys
 from PyQt5.QtGui import QPainter, QColor
 import random
 from PyQt5 import uic
+from PyQt5 import QtCore, QtGui, QtWidgets
 
 
-class CreateCircle(QMainWindow):
+class Ui_Form(object):
+    def setupUi(self, Form):
+        Form.setObjectName("Form")
+        Form.resize(687, 726)
+        self.button = QtWidgets.QPushButton(Form)
+        self.button.setGeometry(QtCore.QRect(210, 630, 261, 51))
+        font = QtGui.QFont()
+        font.setPointSize(11)
+        self.button.setFont(font)
+        self.button.setObjectName("button")
+
+        self.retranslateUi(Form)
+        QtCore.QMetaObject.connectSlotsByName(Form)
+
+    def retranslateUi(self, Form):
+        _translate = QtCore.QCoreApplication.translate
+        Form.setWindowTitle(_translate("Form", "Form"))
+        self.button.setText(_translate("Form", " Push to create circle"))
+
+
+class CreateCircle(QMainWindow, Ui_Form):
     def __init__(self):
         super().__init__()
-        uic.loadUi('UI.ui', self)
+        self.setupUi(self)
         self.do_paint = False
         self.button.clicked.connect(self.paint)
 
