@@ -2,7 +2,6 @@ from PyQt5.QtWidgets import QMainWindow, QApplication
 import sys
 from PyQt5.QtGui import QPainter, QColor
 import random
-from PyQt5 import uic
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 
@@ -46,7 +45,7 @@ class CreateCircle(QMainWindow, Ui_Form):
         self.update()
 
     def run(self, qp):
-        qp.setBrush(QColor(255, 255, 0))
+        qp.setBrush(QColor(random.randint(1, 255), random.randint(1, 255), random.randint(1, 255)))
         x = random.randint(1, 350)
         qp.drawEllipse(200, 200, x, x)
 
